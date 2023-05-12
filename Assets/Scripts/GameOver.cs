@@ -13,6 +13,7 @@ public class GameOver : MonoBehaviour
     public TextMeshProUGUI gameOverPanel; 
     public TextMeshProUGUI highScorePanel;
     public bool gameOver = false;
+    public AudioSource milk;
     //-1->0.6
     //0.5->2.6
     //3.37->5.74
@@ -55,5 +56,10 @@ public class GameOver : MonoBehaviour
             audioPlayer.Play();
             gameOver = true;
         }
+        if (collision.tag == "Milk")
+        {
+            milk.Play();
+        }
     }
+    
 }

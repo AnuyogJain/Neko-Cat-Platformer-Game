@@ -42,4 +42,6 @@ public class HowTo : MonoBehaviour
     public void onClick() {
         SceneManager.LoadScene("Menu");
     }
+
+    
 }
