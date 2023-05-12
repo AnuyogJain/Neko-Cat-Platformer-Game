@@ -7,6 +7,7 @@ TagManager:
   - Cat
   - Ground
   - Water
+  - Milk
   layers:
   - Default
   - TransparentFX

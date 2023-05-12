@@ -12,6 +12,8 @@ public class LevelGenerator : MonoBehaviour
     public Vector3 spawnEndPos;
     public GameObject player;
     float distanceFromPlayer = 20;
+    public GameObject[] milk;
+    public GameObject[] bowls;
     float bg = 0; 
     private void Awake()
     {
@@ -49,12 +51,12 @@ public class LevelGenerator : MonoBehaviour
         Transform temp = Instantiate(level, spawnPosition, Quaternion.identity);
         if (GameManager.Instance)
         {
-            int tempNum = GameManager.Instance.score / 50;
-            if (GameManager.Instance.score - (tempNum * 50) > 15)
+            int tempNum = GameManager.Instance.score / 100;
+            if (GameManager.Instance.score - (tempNum * 100) > 33)
             {
                 temp.GetChild(0).GetComponent<Renderer>().material.color = new Color(193 / 255f, 243 / 255f, 185 / 255f);
             }
-            if (GameManager.Instance.score - (tempNum * 50) > 40)
+            if (GameManager.Instance.score - (tempNum * 100) > 66)
             {
                 temp.GetChild(0).GetComponent<Renderer>().material.color = new Color(255 / 255f, 186 / 255f, 132 / 255f);
             }
@@ -69,15 +71,15 @@ public class LevelGenerator : MonoBehaviour
         //Transform temp1 = Instantiate(ground, spawnPosition + new Vector3(0,2,0), Quaternion.identity);
         float sizeRandom = UnityEngine.Random.Range(0.1f, 0.3f);
         if (GameManager.Instance) {
-            if (GameManager.Instance.score > 30)
+            if (GameManager.Instance.score > 50)
             {
                 sizeRandom = UnityEngine.Random.Range(0.1f, 0.25f);
             }
-            if (GameManager.Instance.score > 50)
+            if (GameManager.Instance.score > 70)
             {
                 sizeRandom = UnityEngine.Random.Range(0.1f, 0.2f);
             }
-            if (GameManager.Instance.score > 80)
+            if (GameManager.Instance.score > 100)
             {
                 sizeRandom = UnityEngine.Random.Range(0.1f, 0.15f);
             }
@@ -87,6 +89,20 @@ public class LevelGenerator : MonoBehaviour
         //temp.GetChild(0).transform.localScale = new Vector3(sizeRandom, sizeRandom, 0);
         Transform temp = Instantiate(ground, spawnPosition, Quaternion.identity);
         temp.GetChild(0).transform.localScale = new Vector3(sizeRandom, sizeRandom, 0);
+        int isMilk = UnityEngine.Random.Range(0, 4);
+        if (isMilk >= 1) {
+            int whichMilkProb = UnityEngine.Random.Range(0, 1800);
+            if (whichMilkProb < 1000)
+                Instantiate(milk[0], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
+            else if (whichMilkProb < 1500)
+                Instantiate(milk[1], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
+            else if (whichMilkProb < 1700)
+                Instantiate(milk[2], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
+            else
+                Instantiate(milk[3], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
+        }
+        //GameObject temp2 = Instantiate(bowls[UnityEngine.Random.Range(0, 2)], temp.position + new Vector3(1.08f, -(0.3f-sizeRandom), 0), Quaternion.identity);
+        
         spawnEndPos = temp.GetChild(0).GetChild(0).position;
         spawnEndPos.y = 0;
     }

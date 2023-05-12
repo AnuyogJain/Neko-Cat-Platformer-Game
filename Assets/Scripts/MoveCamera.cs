@@ -18,8 +18,11 @@ public class MoveCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveCamera)
-            transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        if (GameManager.Instance.isPlay) { 
+            if (moveCamera)
+                transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        }
+        
     }
 
     IEnumerator IncreaseSpeed()
@@ -33,10 +36,12 @@ public class MoveCamera : MonoBehaviour
     }
     IEnumerator Wait()
     {
+        while (GameManager.Instance.isPlay == false) {
+            yield return new WaitForSeconds(0.1f);
+        }
         yield return new WaitForSeconds(1f);
-        moveCamera = true;
-        
-        StopCoroutine("Wait");
+        if (isPause == false)
+            moveCamera = true;
     }
 
     public void onClickItchDown() {
