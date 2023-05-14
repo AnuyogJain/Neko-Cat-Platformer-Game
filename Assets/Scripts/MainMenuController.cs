@@ -28,10 +28,12 @@ public class MainMenuController : MonoBehaviour
     
     
     public void Play() {
-        if (isJoyStick)
+        /*if (isJoyStick)
             SceneManager.LoadScene("Cat Joystick");
         else
-            SceneManager.LoadScene("Cat");
+            SceneManager.LoadScene("Cat");*/
+
+        SceneManager.LoadScene("Cat Joystick");
     }
 
     public void Exit() {
