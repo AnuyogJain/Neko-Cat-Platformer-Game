@@ -91,12 +91,12 @@ public class LevelGenerator : MonoBehaviour
         temp.GetChild(0).transform.localScale = new Vector3(sizeRandom, sizeRandom, 0);
         int isMilk = UnityEngine.Random.Range(0, 4);
         if (isMilk >= 1) {
-            int whichMilkProb = UnityEngine.Random.Range(0, 1900);
+            int whichMilkProb = UnityEngine.Random.Range(0, 1800);
             if (whichMilkProb < 1000)
                 Instantiate(milk[0], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
             else if (whichMilkProb < 1500)
                 Instantiate(milk[1], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
-            else if (whichMilkProb < 1800)
+            else if (whichMilkProb < 1700)
                 Instantiate(milk[2], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
             else
                 Instantiate(milk[3], spawnPosition + new Vector3(0, 0.2f, 0), Quaternion.identity);
